@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP Labs — Logo ideas</title>
+<!-- Logo exploration for EP Labs. Lives in _design/, which GitHub Pages does not publish.
+     Preview locally at http://localhost:4000/_design/logo-ideas.html -->
+<style>
+  :root {
+    --bg: #F6F6F4; --card: #FFFFFF; --text: #141414; --muted: #6B6B6B; --border: #E4E4E0;
+    --ink: #141414; --paper: #FFFFFF; --accent: #FF5A36;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0E0E0F; --card: #1B1B1D; --text: #EDEDED; --muted: #9A9A9A; --border: #2A2A2D; --ink: #EDEDED; --paper: #0E0E0F; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 28px; letter-spacing: -0.015em; margin: 0 0 6px; }
+  .lead { color: var(--muted); margin: 0 0 20px; }
+  .swatches { display: flex; gap: 8px; align-items: center; margin-bottom: 28px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+  .swatches button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); cursor: pointer; }
+  .swatches button[aria-pressed="true"] { border-color: var(--text); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .opt { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 22px; }
+  .opt h2, .variant h2 { margin: 0; font-size: 17px; }
+  .opt .num, .variant .num { color: var(--muted); font-weight: 600; margin-right: 6px; }
+  .opt p, .variant p { margin: 4px 0 18px; color: var(--muted); font-size: 14.5px; }
+  .stage { display: grid; place-items: center; height: 160px; border-radius: 16px; background: var(--bg); margin-bottom: 14px; }
+  .stage svg { width: 112px; height: 112px; }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .lockup { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; }
+  .lockup svg { width: 30px; height: 30px; }
+  .tiny { display: inline-flex; gap: 10px; align-items: center; }
+  .tiny svg:first-child { width: 32px; height: 32px; }
+  .tiny svg:last-child { width: 16px; height: 16px; }
+  .dark { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 12px; background: #141414; }
+  .dark svg { width: 34px; height: 34px; }
+  .dark { --ink: #EDEDED; --paper: #141414; }
+  .word { font-weight: 800; letter-spacing: -0.04em; }
+  .word .light { font-weight: 400; color: var(--muted); letter-spacing: -0.02em; }
+  .variants { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .variant { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 22px; }
+  .variant .stage { height: 120px; }
+  .variant .big { font-size: 44px; }
+  .variant .head { font-size: 20px; }
+  .favi { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: var(--ink); color: var(--paper); font-weight: 800; font-size: 15px; letter-spacing: -0.04em; white-space: nowrap; }
+  .w { font-weight: 800; letter-spacing: -0.04em; }
+  .w .l { font-weight: 400; color: var(--muted); letter-spacing: -0.02em; }
+  .w .a { color: var(--accent); }
+  .w .dot { color: var(--accent); margin-left: 1px; }
+  h2.part { font-size: 22px; letter-spacing: -0.01em; margin: 48px 0 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>EP Labs: logo ideas</h1>
+  <p class="lead">Six minimal directions. Each shows the mark large, in the header, at favicon sizes (32px and 16px) and on a dark background.</p>
+  <div class="swatches" role="group" aria-label="Accent colour">
+    Accent:
+    <button style="background:#FF5A36" data-c="#FF5A36" aria-pressed="true" title="Coral"></button>
+    <button style="background:#4F8EF7" data-c="#4F8EF7" aria-pressed="false" title="Blue"></button>
+    <button style="background:#16A34A" data-c="#16A34A" aria-pressed="false" title="Green"></button>
+    <button style="background:#8B5CF6" data-c="#8B5CF6" aria-pressed="false" title="Violet"></button>
+    <button style="background:#141414" data-c="currentColor" aria-pressed="false" title="No accent"></button>
+  </div>
+
+  <!-- Each mark lives once in a <template>; the script copies it into every slot. -->
+  <div class="grid">
+    <section class="opt" data-mark="m1">
+      <h2><span class="num">1</span>Monogram tile</h2>
+      <p>Lowercase "ep" in a rounded square, the same shape as an app icon, so it sits naturally next to Budgie, Stockey and Tap.</p>
+    </section>
+    <section class="opt" data-mark="m2">
+      <h2><span class="num">2</span>Geometric e + p</h2>
+      <p>Both letters drawn from circles and straight strokes, the way the app icons are built. Works as a line drawing at any size.</p>
+    </section>
+    <section class="opt" data-mark="m3">
+      <h2><span class="num">3</span>"ep." with an accent dot</h2>
+      <p>The full stop is the only colour. It suggests a finished, shipped product.</p>
+    </section>
+    <section class="opt" data-mark="m4">
+      <h2><span class="num">4</span>App grid</h2>
+      <p>Four rounded squares, one filled: a studio of apps, with the latest highlighted. No letters, so it reads in any language.</p>
+    </section>
+    <section class="opt" data-mark="m5">
+      <h2><span class="num">5</span>Flask</h2>
+      <p>The literal "Labs" reading, as a single-weight outline with one bubble in the accent colour. Playful but still quiet.</p>
+    </section>
+    <section class="opt" data-mark="m6">
+      <h2><span class="num">6</span>Wordmark only</h2>
+      <p>No symbol: "ep" in a heavy weight, "labs" in a light one. The simplest option, and the favicon becomes just the "ep".</p>
+    </section>
+  </div>
+
+  <h2 class="part">Option 6: where the coral goes</h2>
+  <p class="lead">The bar in the first sketch was meant as a text cursor, "still building", but it doesn't read clearly. These are four clearer ways to place the accent.</p>
+  <div class="variants">
+    <section class="variant">
+      <h2><span class="num">6a</span>No accent</h2>
+      <p>Black and grey only. Calm, and lets the app icons carry the colour.</p>
+      <div class="stage"><span class="w big">ep<span class="l">labs</span></span></div>
+      <div class="row"><span class="lockup"><span class="w head">ep<span class="l">labs</span></span></span><span class="favi">ep</span></div>
+    </section>
+    <section class="variant">
+      <h2><span class="num">6b</span>Full stop</h2>
+      <p>A coral dot to close the name: shipped, done. Echoes option 3.</p>
+      <div class="stage"><span class="w big">ep<span class="l">labs</span><span class="dot">.</span></span></div>
+      <div class="row"><span class="lockup"><span class="w head">ep<span class="l">labs</span><span class="dot">.</span></span></span><span class="favi">ep<span style="color:var(--accent)">.</span></span></div>
+    </section>
+    <section class="variant">
+      <h2><span class="num">6c</span>Coral "ep"</h2>
+      <p>The initials carry the colour: the person behind the studio.</p>
+      <div class="stage"><span class="w big"><span class="a">ep</span><span class="l">labs</span></span></div>
+      <div class="row"><span class="lockup"><span class="w head"><span class="a">ep</span><span class="l">labs</span></span></span><span class="favi" style="background:var(--accent);color:#fff">ep</span></div>
+    </section>
+    <section class="variant">
+      <h2><span class="num">6d</span>Coral "labs"</h2>
+      <p>The colour sits on the playful part; "ep" stays solid.</p>
+      <div class="stage"><span class="w big">ep<span class="l" style="color:var(--accent)">labs</span></span></div>
+      <div class="row"><span class="lockup"><span class="w head">ep<span class="l" style="color:var(--accent)">labs</span></span></span><span class="favi">ep</span></div>
+    </section>
+  </div>
+</div>
+
+<template id="m1">
+  <svg viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="15" fill="var(--ink)"/><text x="32" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" letter-spacing="-1.5" fill="var(--paper)">ep</text><circle cx="49" cy="15" r="4" fill="var(--accent)"/></svg>
+</template>
+<template id="m2">
+  <svg viewBox="0 0 64 64" fill="none" stroke-width="7" stroke-linecap="round"><path d="M7 32H29A11 11 0 1 0 25.8 39.8" stroke="var(--ink)"/><path d="M36 21V54" stroke="var(--ink)"/><circle cx="46" cy="31" r="10" stroke="var(--accent)"/></svg>
+</template>
+<template id="m3">
+  <svg viewBox="0 0 64 64"><text x="4" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-2" fill="var(--ink)">ep</text><circle cx="54" cy="40" r="5.5" fill="var(--accent)"/></svg>
+</template>
+<template id="m4">
+  <svg viewBox="0 0 64 64" fill="none" stroke-width="4"><rect x="6" y="6" width="23" height="23" rx="7" fill="var(--accent)" stroke="var(--accent)"/><rect x="35" y="6" width="23" height="23" rx="7" stroke="var(--ink)"/><rect x="6" y="35" width="23" height="23" rx="7" stroke="var(--ink)"/><rect x="35" y="35" width="23" height="23" rx="7" stroke="var(--ink)"/></svg>
+</template>
+<template id="m5">
+  <svg viewBox="0 0 64 64" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 8H41M27 8V25L13 50Q11 55 16 55H48Q53 55 51 50L37 25V8" stroke="var(--ink)"/><path d="M19 42H45" stroke="var(--ink)"/><circle cx="33" cy="48" r="3.5" fill="var(--accent)" stroke="none"/></svg>
+</template>
+<template id="m6">
+  <svg viewBox="0 0 64 64"><text x="32" y="43" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800" letter-spacing="-2" fill="var(--ink)">ep</text><rect x="12" y="50" width="12" height="4" rx="2" fill="var(--accent)"/></svg>
+</template>
+
+<script>
+  document.querySelectorAll('.opt').forEach(function (opt) {
+    var mark = document.getElementById(opt.dataset.mark).innerHTML;
+    var isWord = opt.dataset.mark === 'm6';
+    var label = isWord
+      ? '<span class="word">ep<span class="light">labs</span></span>'
+      : 'EP Labs';
+    opt.insertAdjacentHTML('beforeend',
+      '<div class="stage">' + (isWord ? '<span class="word" style="font-size:48px">ep<span class="light">labs</span></span>' : mark) + '</div>' +
+      '<div class="row">' +
+        '<span class="lockup">' + (isWord ? '' : mark) + label + '</span>' +
+        '<span class="tiny">' + mark + mark + '</span>' +
+        '<span class="dark">' + mark + '</span>' +
+      '</div>');
+  });
+  document.querySelectorAll('.swatches button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.documentElement.style.setProperty('--accent', b.dataset.c);
+      document.querySelectorAll('.swatches button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    });
+  });
+</script>
+</body>
+</html>
