@@ -30,6 +30,11 @@
     --budgie: #4F8EF7;
     --budgie-deep: #2A55C4;
     --budgie-wash: #DCE8FD;
+    --budgie-pos: #0E7C51;
+    --budgie-amber: #E8A23B;
+    --budgie-amber-ink: #A9640B;
+    --raised: #FFFFFF;
+    --rounded: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -42,6 +47,10 @@
       --budgie: #6FA6FA;
       --budgie-deep: #4F8EF7;
       --budgie-wash: #16233A;
+      --budgie-pos: #62D4A1;
+      --budgie-amber: #F0B45A;
+      --budgie-amber-ink: #F0B45A;
+      --raised: #2E3338;
     }
   }
 
@@ -103,14 +112,57 @@
     .featured { padding: 28px 22px; }
     .badges img { height: 40px; }
   }
-  .highlights { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-  .highlights li {
-    display: flex; gap: 14px; align-items: flex-start;
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px;
+  /* A few pieces of Budgie's own UI, layered like on budgie's site. Decorative. */
+  .vignette { position: relative; display: grid; justify-items: center; padding: 8px 0; }
+  .vignette::before {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 440px; height: 440px; margin: -220px 0 0 -220px; border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--budgie) 18%, transparent), transparent);
+    pointer-events: none;
   }
-  .highlights svg { flex: none; width: 22px; height: 22px; margin-top: 2px; stroke: var(--budgie); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .highlights strong { display: block; font-size: 16px; }
-  .highlights span { color: var(--muted); font-size: 14.5px; }
+  .vignette > * { position: relative; width: 100%; }
+  .mock {
+    max-width: 320px; background: var(--raised); border-radius: 18px;
+    box-shadow: 0 14px 32px -12px rgba(17, 24, 28, 0.22);
+    padding: 6px 14px; font-size: 14px;
+  }
+  .mock-row { display: flex; align-items: center; gap: 11px; padding: 10px 0; }
+  .mock-row + .mock-row { border-top: 1px solid var(--border); }
+  .tile { flex: none; width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: var(--bg); font-size: 17px; }
+  .grow { flex: 1; min-width: 0; }
+  .head-row { display: flex; justify-content: space-between; gap: 8px; }
+  .mock .name { font-weight: 600; line-height: 1.3; }
+  .left { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .left b { font-weight: 700; color: var(--text); }
+  .left.warn b { color: var(--budgie-amber-ink); }
+  .bar { display: block; height: 7px; border-radius: 99px; background: var(--bg); margin-top: 6px; overflow: hidden; }
+  .bar span { display: block; height: 100%; border-radius: inherit; background: var(--budgie-pos); }
+  .bar.warn span { background: var(--budgie-amber); }
+  .bubble {
+    max-width: 250px; justify-self: end; margin-bottom: -14px; z-index: 1; rotate: 1.5deg;
+    display: flex; align-items: flex-end; gap: 9px;
+    background: var(--raised); border-radius: 18px 18px 18px 6px; padding: 10px 14px 10px 10px;
+    font-size: 13.5px; line-height: 1.45; box-shadow: 0 10px 24px -10px rgba(17, 24, 28, 0.25);
+  }
+  .bubble img { flex: none; width: 26px; height: 26px; border-radius: 8px; }
+  .bubble b { font-weight: 700; }
+  .goal {
+    max-width: 236px; justify-self: start; margin-top: -16px; rotate: -2deg;
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  }
+  .ring { flex: none; width: 50px; height: 50px; position: relative; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font: 800 13px/1 var(--rounded); }
+  .goal .name { font: 800 16px/1.25 var(--rounded); }
+  .goal .meta { color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+  @media (min-width: 820px) {
+    .bubble { margin-right: -12px; }
+    .goal { margin-left: -16px; }
+  }
+  @media (max-width: 480px) {
+    .bubble { margin-right: 0; }
+    .goal { rotate: -1deg; }
+  }
 
   /* App grid */
   .apps { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -172,20 +224,18 @@
         </div>
         <a class="more" href="/budgie/">More about Budgie <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="highlights">
-        <li>
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12V3a9 9 0 0 1 9 9z"/></svg>
-          <div><strong>Budgets that make sense</strong><span>See how much room is left in every category this month.</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          <div><strong>Private by default</strong><span>Works offline. Your records stay on your phone.</span></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg>
-          <div><strong>AI insights with Pro</strong><span>Spots the habits and quick wins in your spending.</span></div>
-        </li>
-      </ul>
+      <div class="vignette" aria-hidden="true">
+        <div class="bubble"><img src="apps/budgie.png" width="26" height="26" alt=""><span>Skip two lunches out a week and Holiday lands <b>5 weeks sooner</b>.</span></div>
+        <div class="mock">
+          <div class="mock-row"><span class="tile">🍔</span><span class="grow"><span class="head-row"><span class="name">Takeaway</span><span class="left warn"><b>$18 left</b> of $180</span></span><span class="bar warn"><span style="width:90%"></span></span></span></div>
+          <div class="mock-row"><span class="tile">🍎</span><span class="grow"><span class="head-row"><span class="name">Groceries</span><span class="left"><b>$228 left</b> of $600</span></span><span class="bar"><span style="width:62%"></span></span></span></div>
+          <div class="mock-row"><span class="tile">🎬</span><span class="grow"><span class="head-row"><span class="name">Subscriptions</span><span class="left"><b>$36 left</b> of $60</span></span><span class="bar"><span style="width:40%"></span></span></span></div>
+        </div>
+        <div class="mock goal">
+          <span class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="var(--bg)" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="var(--budgie-pos)" stroke-width="5" stroke-linecap="round" stroke-dasharray="58.4 94.2"/></svg><b>62%</b></span>
+          <span class="grow"><span class="name">🌴 Holiday</span><br><span class="meta">$1,240 of $2,000</span></span>
+        </div>
+      </div>
     </div>
   </section>
 
